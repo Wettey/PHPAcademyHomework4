@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="82f2e91d-1482-4241-8ce8-f13085dec3d3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="4cea5d43-7a20-4487-8e2e-a945bcf13ac0" value="Orange" />
+    </colors>
+  </component>
+  <component name="ProjectId" id="1hKezb5vOaCFoQnpQana1mUb0T7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82f2e91d-1482-4241-8ce8-f13085dec3d3" name="Default Changelist" comment="" />
+      <created>1599764473142</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599764473142</updated>
+      <workItem from="1599764474168" duration="10002000" />
+      <workItem from="1599830855408" duration="2525000" />
+      <workItem from="1599872572508" duration="10262000" />
+      <workItem from="1599892779477" duration="20376000" />
+      <workItem from="1599935433428" duration="167000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1520" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599773396075">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state x="1520" y="356" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1388@0.0.2560.1388" timestamp="1599773396075" />
+    <state width="948" height="389" key="GridCell.Tab.0.bottom" timestamp="1599933831070">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state width="948" height="389" key="GridCell.Tab.0.bottom/0.0.2560.1388@0.0.2560.1388" timestamp="1599933831070" />
+    <state width="948" height="389" key="GridCell.Tab.0.center" timestamp="1599933831069">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state width="948" height="389" key="GridCell.Tab.0.center/0.0.2560.1388@0.0.2560.1388" timestamp="1599933831069" />
+    <state width="948" height="389" key="GridCell.Tab.0.left" timestamp="1599933831069">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state width="948" height="389" key="GridCell.Tab.0.left/0.0.2560.1388@0.0.2560.1388" timestamp="1599933831069" />
+    <state width="948" height="389" key="GridCell.Tab.0.right" timestamp="1599933831070">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state width="948" height="389" key="GridCell.Tab.0.right/0.0.2560.1388@0.0.2560.1388" timestamp="1599933831070" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1599923299026">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.2560.1388@0.0.2560.1388" timestamp="1599923299026" />
+    <state x="1751" y="565" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1599773544573">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state x="1751" y="565" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.2560.1388@0.0.2560.1388" timestamp="1599773544573" />
+    <state x="1648" y="571" width="394" height="252" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1599926915565">
+      <screen x="0" y="0" width="2560" height="1388" />
+    </state>
+    <state x="1648" y="571" width="394" height="252" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.2560.1388@0.0.2560.1388" timestamp="1599926915565" />
+  </component>
+</project>
