@@ -5006,173 +5006,178 @@
       <Primary>1</Primary>
     </key>
     <trigger id="1205" parent="408" name="soldier_after_war">
-      <SourceTextLength>82</SourceTextLength>
+      <SourceTextLength>66</SourceTextLength>
       <Definer>root@localhost</Definer>
       <Turn>after-row</Turn>
       <Events>U</Events>
     </trigger>
-    <column id="1206" parent="409" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="1207" parent="409" name="soldier">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="1208" parent="409" name="battle">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="1209" parent="409" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="1210" parent="410" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="1211" parent="410" name="name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="1212" parent="410" name="leader">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="1213" parent="410" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="1214" parent="411" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="1215" parent="411" name="name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="1216" parent="411" name="school">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="1217" parent="411" name="lethal">
-      <Position>4</Position>
-      <DataType>tinyint(4)|0s</DataType>
-    </column>
-    <key id="1218" parent="411" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="1219" parent="412" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="1220" parent="412" name="name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="1221" parent="412" name="title">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="1222" parent="412" name="faction">
-      <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="1223" parent="412" name="age">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="1224" parent="412" name="height">
-      <Position>6</Position>
-      <DataType>float|0s</DataType>
-    </column>
-    <column id="1225" parent="412" name="active">
-      <Position>7</Position>
-      <DataType>tinyint(4)|0s</DataType>
-    </column>
-    <index id="1226" parent="412" name="faction">
-      <ColNames>faction</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="1227" parent="412" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="1228" parent="412" name="soldier_ibfk_1">
-      <ColNames>faction</ColNames>
-      <RefTableName>faction</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="1229" parent="413" name="soldier">
+    <column id="1206" parent="409" name="soldier">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="1230" parent="413" name="weapon">
+    <column id="1207" parent="409" name="battle">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="1231" parent="413" name="magic">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <index id="1232" parent="413" name="soldier">
+    <index id="1208" parent="409" name="soldier">
       <ColNames>soldier</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="1233" parent="413" name="weapon">
-      <ColNames>weapon</ColNames>
+    <index id="1209" parent="409" name="battle">
+      <ColNames>battle</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="1234" parent="413" name="magic">
-      <ColNames>magic</ColNames>
-      <Type>btree</Type>
-    </index>
-    <foreign-key id="1235" parent="413" name="soldier_weapon_magic_ibfk_1">
+    <foreign-key id="1210" parent="409" name="battle_fought_ibfk_1">
       <ColNames>soldier</ColNames>
       <RefTableName>soldier</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="1236" parent="413" name="soldier_weapon_magic_ibfk_2">
-      <ColNames>weapon</ColNames>
-      <RefTableName>weapon</RefTableName>
+    <foreign-key id="1211" parent="409" name="battle_fought_ibfk_2">
+      <ColNames>battle</ColNames>
+      <RefTableName>battle</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="1237" parent="413" name="soldier_weapon_magic_ibfk_3">
-      <ColNames>magic</ColNames>
-      <RefTableName>magic</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="1238" parent="414" name="id">
+    <column id="1212" parent="410" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="1239" parent="414" name="name">
+    <column id="1213" parent="410" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="1240" parent="414" name="type">
+    <column id="1214" parent="410" name="leader">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="1215" parent="410" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="1216" parent="411" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="1217" parent="411" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="1218" parent="411" name="school">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="1241" parent="414" name="PRIMARY">
+    <column id="1219" parent="411" name="lethal">
+      <Position>4</Position>
+      <DataType>tinyint(4)|0s</DataType>
+    </column>
+    <key id="1220" parent="411" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="1221" parent="412" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="1222" parent="412" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="1223" parent="412" name="title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="1224" parent="412" name="faction">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="1225" parent="412" name="age">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="1226" parent="412" name="height">
+      <Position>6</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="1227" parent="412" name="active">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0s</DataType>
+    </column>
+    <index id="1228" parent="412" name="faction">
+      <ColNames>faction</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="1229" parent="412" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="1230" parent="412" name="soldier_ibfk_1">
+      <ColNames>faction</ColNames>
+      <RefTableName>faction</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="1231" parent="413" name="soldier">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="1232" parent="413" name="weapon">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="1233" parent="413" name="magic">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <index id="1234" parent="413" name="soldier">
+      <ColNames>soldier</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="1235" parent="413" name="weapon">
+      <ColNames>weapon</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="1236" parent="413" name="magic">
+      <ColNames>magic</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="1237" parent="413" name="soldier_weapon_magic_ibfk_1">
+      <ColNames>soldier</ColNames>
+      <RefTableName>soldier</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="1238" parent="413" name="soldier_weapon_magic_ibfk_2">
+      <ColNames>weapon</ColNames>
+      <RefTableName>weapon</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="1239" parent="413" name="soldier_weapon_magic_ibfk_3">
+      <ColNames>magic</ColNames>
+      <RefTableName>magic</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="1240" parent="414" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="1241" parent="414" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="1242" parent="414" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="1243" parent="414" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

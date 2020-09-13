@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 12, 2020 at 08:31 PM
+-- Generation Time: Sep 13, 2020 at 03:22 PM
 -- Server version: 10.4.14-MariaDB-1:10.4.14+maria~buster-log
 -- PHP Version: 7.4.10
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `skyrim_war`
+-- Database: `db_backup`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,11 @@ CREATE TABLE `battle` (
 --
 
 INSERT INTO `battle` (`id`, `name`, `event_time`, `completed`, `description`) VALUES
+(1, 'The Great War', '1171-04-27 00:00:00', 0, 'It was horrible.'),
+(2, 'Markarth Incident', '1173-07-13 00:00:00', 0, 'Ulfric yeeted the savages off some walls or something.'),
+(3, 'Capture of Ulfric', '1200-12-25 00:00:00', 0, 'Gotem. Oh, and Dragoborn comes!'),
 (4, 'Battle for Whiterun', '1201-03-01 00:00:00', 0, 'Lorem ipsum dolor sit amet etc.'),
+(5, 'Battle for the Rift', '1201-05-13 00:00:00', 0, 'Lorem ipsum dolor sit amet etc.'),
 (6, 'Battle for the Pale', '1201-07-15 00:00:00', 0, 'Lorem ipsum dolor sit amet etc.'),
 (7, 'Battle for Windhelm', '1202-01-01 00:00:00', 1, 'Lorem ipsum dolor sit amet etc.');
 
@@ -50,9 +54,9 @@ INSERT INTO `battle` (`id`, `name`, `event_time`, `completed`, `description`) VA
 --
 DELIMITER $$
 CREATE TRIGGER `soldier_after_war` AFTER UPDATE ON `battle` FOR EACH ROW BEGIN
-        UPDATE soldier SET active = 0
-            WHERE faction = 2;
-    END
+    UPDATE soldier SET active = 0
+    WHERE faction = 2;
+END
 $$
 DELIMITER ;
 
@@ -63,31 +67,26 @@ DELIMITER ;
 --
 
 CREATE TABLE `battle_fought` (
-  `id` int(11) NOT NULL,
-  `soldier` int(11) NOT NULL,
-  `battle` int(11) NOT NULL
+  `soldier` int(11) DEFAULT NULL,
+  `battle` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `battle_fought`
 --
 
-INSERT INTO `battle_fought` (`id`, `soldier`, `battle`) VALUES
-(1, 1, 1),
-(2, 1, 3),
-(3, 1, 7),
-(4, 2, 1),
-(5, 2, 2),
-(6, 2, 7),
-(7, 3, 1),
-(8, 4, 3),
-(9, 5, 4),
-(10, 6, 5),
-(11, 7, 6),
-(12, 8, 7),
-(13, 9, 4),
-(14, 10, 4),
-(15, 11, 5);
+INSERT INTO `battle_fought` (`soldier`, `battle`) VALUES
+(2, 1),
+(2, 2),
+(2, 7),
+(3, 1),
+(5, 4),
+(6, 5),
+(7, 6),
+(8, 7),
+(9, 4),
+(10, 4),
+(11, 5);
 
 -- --------------------------------------------------------
 
@@ -198,11 +197,9 @@ CREATE TABLE `soldier_weapon_magic` (
 --
 
 INSERT INTO `soldier_weapon_magic` (`soldier`, `weapon`, `magic`) VALUES
-(2, 2, 9),
-(2, NULL, 10),
+(1, 4, NULL),
 (3, 7, 1),
 (3, NULL, 7),
-(4, 7, 9),
 (5, 4, 10),
 (6, 5, NULL),
 (7, 2, 2),
@@ -261,7 +258,8 @@ ALTER TABLE `battle`
 -- Indexes for table `battle_fought`
 --
 ALTER TABLE `battle_fought`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `soldier` (`soldier`),
+  ADD KEY `battle` (`battle`);
 
 --
 -- Indexes for table `faction`
@@ -307,12 +305,6 @@ ALTER TABLE `battle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `battle_fought`
---
-ALTER TABLE `battle_fought`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
 -- AUTO_INCREMENT for table `faction`
 --
 ALTER TABLE `faction`
@@ -339,6 +331,13 @@ ALTER TABLE `weapon`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `battle_fought`
+--
+ALTER TABLE `battle_fought`
+  ADD CONSTRAINT `battle_fought_ibfk_1` FOREIGN KEY (`soldier`) REFERENCES `soldier` (`id`),
+  ADD CONSTRAINT `battle_fought_ibfk_2` FOREIGN KEY (`battle`) REFERENCES `battle` (`id`);
 
 --
 -- Constraints for table `soldier`

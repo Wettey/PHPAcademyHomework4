@@ -7,7 +7,7 @@ drop database if exists skyrim_war;
 
 CREATE DATABASE  skyrim_war
     CHARACTER SET utf8mb4
-        COLLATE utf8mb4_unicode_ci;
+    COLLATE utf8mb4_unicode_ci;
 
 use skyrim_war;
 
@@ -23,7 +23,7 @@ CREATE TABLE faction
 );
 
 INSERT INTO faction
-    (name, leader)
+(name, leader)
 VALUES ('Empire', 1),
        ('Stormcloaks', 2),
        ('Thalmor', 3);
@@ -39,7 +39,7 @@ CREATE TABLE battle
 );
 
 INSERT INTO battle
-    (name, event_time, completed,  description)
+(name, event_time, completed,  description)
 VALUES ('The Great War', '1171-04-27', 0, 'The Thalmor suprised the empire yada yada...'),
        ('Markarth Incident', '1173-07-13', 0, 'Ulfric yeeted the savages off some walls or something.'),
        ('Capture of Ulfric', '1200-12-25', 0, 'Gotem. Oh, and Dragoborn comes!'),
@@ -63,7 +63,7 @@ CREATE TABLE soldier
 );
 
 INSERT INTO soldier
-    (name, title, faction, age, height, active)
+(name, title, faction, age, height, active)
 VALUES ('Tullius', 'General', 1, 59, 175.5, 1),
        ('Ulfric', 'General', 2,  47, 186.3, 1),
        ('Elenwen', 'General', 3, 673, 199, 1),
@@ -94,7 +94,7 @@ CREATE TABLE weapon
 );
 
 INSERT INTO weapon
-    (name, type)
+(name, type)
 VALUES ('Iron piercer', 'Sword'),
        ('Iron cutter', 'Axe'),
        ('Iron smasher', 'Mace'),
@@ -143,7 +143,7 @@ CREATE TABLE soldier_weapon_magic
 );
 
 INSERT INTO soldier_weapon_magic
-    (soldier, weapon, magic)
+(soldier, weapon, magic)
 VALUES (1, 4, null),
        (2, 2, 9),
        (2, null, 10),
@@ -169,9 +169,12 @@ VALUES (1, 4, null),
 
 CREATE TABLE battle_fought
 (
-    id int not null primary key auto_increment,
-    soldier int not null,
-    battle int not null
+    soldier int,
+    battle int,
+    foreign key (soldier)
+        references soldier(id),
+    foreign key (battle)
+        references battle(id)
 );
 
 INSERT INTO battle_fought
@@ -213,29 +216,29 @@ WHERE name = 'Unrelenting force';
 
 
 UPDATE battle_fought bf
-LEFT JOIN soldier s ON bf.soldier = s.id
+    LEFT JOIN soldier s ON bf.soldier = s.id
 SET bf.battle = 4
 WHERE s.name = 'Galmar';
 
 SELECT s.name, bf.battle FROM battle_fought bf
-LEFT JOIN soldier s on bf.soldier = s.id
+                                  LEFT JOIN soldier s on bf.soldier = s.id
 WHERE s.name = 'Galmar';
 
 
 UPDATE soldier s
-LEFT JOIN faction f on s.faction = f.id
+    LEFT JOIN faction f on s.faction = f.id
 SET s.active = 0
 WHERE f.name = 'Thalmor';
 
 SELECT * FROM soldier s
-LEFT JOIN faction f on s.faction = f.id
+                  LEFT JOIN faction f on s.faction = f.id
 WHERE f.name = 'Thalmor';
 
 
 UPDATE soldier_weapon_magic swm
-INNER JOIN soldier s on swm.soldier = s.id
+    INNER JOIN soldier s on swm.soldier = s.id
     INNER JOIN weapon w on swm.weapon = w.id
-        INNER JOIN magic m on swm.magic = m.id
+    INNER JOIN magic m on swm.magic = m.id
 SET w.name = 'Steel cracker'
 WHERE s.name = 'Kaire';
 
@@ -264,7 +267,7 @@ WHERE lethal = false;
 
 #queries only soldiers that fight for the Empire
 SELECT * FROM soldier s
-INNER JOIN faction f ON s.faction = f.id
+                  INNER JOIN faction f ON s.faction = f.id
 WHERE f.name = 'Empire';
 
 #using this built-in function, we count how many soldier rows we have
@@ -272,8 +275,8 @@ SELECT COUNT(id) FROM soldier;
 
 #number of weapons that the Thalmor faction are using
 SELECT COUNT(weapon) FROM soldier_weapon_magic swm
-LEFT JOIN soldier s ON s.id = swm.soldier
-INNER JOIN faction f ON f.id = s.faction
+                              LEFT JOIN soldier s ON s.id = swm.soldier
+                              INNER JOIN faction f ON f.id = s.faction
 WHERE f.name = 'Thalmor';
 
 #highest soldier
@@ -285,8 +288,8 @@ WHERE id = 1;
 
 #using the UCASE function + finding all Thalmor who fought in any battles
 SELECT UCASE(s.name) FROM battle_fought bf
-INNER JOIN soldier s on bf.soldier = s.id
-INNER JOIN faction f on s.faction = f.id
+                              INNER JOIN soldier s on bf.soldier = s.id
+                              INNER JOIN faction f on s.faction = f.id
 WHERE f.name = 'Thalmor';
 
 
@@ -298,10 +301,10 @@ WHERE f.name = 'Thalmor';
 CREATE TRIGGER soldier_after_war
     AFTER UPDATE ON battle
     FOR EACH ROW
-    BEGIN
-        UPDATE soldier SET active = 0
-            WHERE faction = 2;
-    END;
+BEGIN
+    UPDATE soldier SET active = 0
+    WHERE faction = 2;
+END;
 
 SHOW TRIGGERS;
 
@@ -311,26 +314,24 @@ WHERE name = 'Battle for Windhelm';
 
 #proving that the trigger works + usage of the CONCAT function
 SELECT (CONCAT(s.name, f.name)), s.active FROM soldier s
-INNER JOIN faction f on s.faction = f.id
+                                                   INNER JOIN faction f on s.faction = f.id
 WHERE active = 0;
 
 
 /*
  Delete section:
  */
-DELETE FROM battle
-WHERE id = 5;
+DELETE FROM battle_fought
+WHERE battle = 3;
+
+DELETE LOW_PRIORITY QUICK FROM battle_fought
+WHERE soldier = 1;
 
 DELETE FROM soldier
 WHERE name = 'Vanahbi';
 
-DELETE FROM battle
-WHERE id IN (3,5);
+DELETE FROM soldier_weapon_magic
+WHERE soldier IN (2,4);
 
 DELETE FROM soldier_weapon_magic
-WHERE soldier =  1;
-
-#playing around
-DELETE LOW_PRIORITY QUICK FROM battle
-WHERE id<=3
-ORDER BY name asc;
+WHERE magic = 9;
